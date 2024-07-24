@@ -61,7 +61,7 @@ const Reservation = () => {
                 style={{ fontFamily: 'Gambetta', fontWeight: 300 }}
                 className='md:text-9xl text-6xl text-textColor relative'
               >
-                RESERVATIONS
+                RESERVATIONSssss
               </span>
             </h2>
           </div>
