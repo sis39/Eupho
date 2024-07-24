@@ -50,10 +50,10 @@ const Reservation = () => {
               
             </motion.div>
           </div>
-          <div className="pl-96">
+          <div className="right-0 bottom-0 absolute">
                 <img src={Orange}/>
             </div>
-          <div className="top-52 absolute">
+          <div className="top-52  absolute">
             <h2 className="pl-28">
               <span
                

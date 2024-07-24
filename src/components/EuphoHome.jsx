@@ -6,6 +6,7 @@ import Inspiration from './Inspiration';
 import Flavours from './Flavours';
 import Menu from "./Menu";
 import Reservation from './Reservation';
+import Footer  from "./Footer";
 const EuphoHome = () => {
   return (
     <div className='bg-coffeeMenu'>
@@ -73,6 +74,9 @@ const EuphoHome = () => {
         </section>
         <section className='md:py-52'>
           <Reservation/>
+        </section>
+        <section>
+          <Footer/>
         </section>
     </div>
   );
