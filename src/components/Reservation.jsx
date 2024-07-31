@@ -1,11 +1,30 @@
 import { Orange, Reservations } from "../utils";
 import { Helmet } from "react-helmet";
-import { useState } from "react";
-import { motion } from 'framer-motion';
+import { useContext, useLayoutEffect, useRef, useState } from "react";
+import {motion} from 'framer-motion';
+import gsap from "gsap";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 import { Leaf } from "../utils";
 const Reservation = () => {
   const [hovered, setHovered] = useState(false);
-
+  const container = useRef(null);
+ const imageRef = useRef(null);
+ useLayoutEffect(()=>{
+      const context = gsap.context(()=>{
+        const t1 = gsap.timeline({
+          scrollTrigger: {
+              trigger: container.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+          },
+          })
+          .to(imageRef.current,{y:-400},0)
+      })
+      return ()=> context.revert()
+ },[])
   return (
     <>
       <Helmet>
@@ -27,15 +46,11 @@ const Reservation = () => {
         `}</style>
       </Helmet>
       <div className="md:px-24 md:pt-36 relative">
-        <div>
+        <div ref={container}>
             
-          <div className="pl-48 flex gap-44" style={{ height: 750 }}>
-            <motion.img
-              initial={{ opacity: 0, x: -500 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 2.0}}
-              viewport={{ once: true }}
-              src={Reservations} 
+          <div className="pl-48 pt-28 flex gap-44" style={{ height: 750 }}>
+            <img ref={imageRef}
+               src={Reservations} 
               className="h-full"
             />
             <motion.div

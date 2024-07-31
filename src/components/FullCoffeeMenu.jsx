@@ -1,30 +1,54 @@
-import Navbar from './Navbar'
-import Footer from './Footer'
-import { coffeeMenu1Img,coffeMenu2Img } from '../utils'
-import { fullpage } from 'jquery'
-import { useEffect } from 'react'
+import { Recipe, Fruits } from "../utils";
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const FullCoffeeMenu = () => {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-      }, []);
+gsap.registerPlugin(ScrollTrigger);
+
+const Inspiration = () => {
+  const containerRef = useRef(null);
+
+  const images = [Recipe, Fruits];
+
+  useEffect(() => {
+    const context = gsap.context(() => {
+      images.forEach((image, i) => {
+        const mask = containerRef.current.children[i].querySelector('.mask');
+        const img = containerRef.current.children[i].querySelector('img');
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: mask,
+            toggleActions: "restart none none reset",
+          },
+        });
+
+        tl.set(mask, { autoAlpha: 1 })
+          .from(mask, 1.5, {
+            xPercent: -100,
+            ease: "Power2.out",
+          })
+          .from(img, 1.5, {
+            xPercent: 100,
+            scale: 1.3,
+            delay: -1.5,
+            ease: "Power2.out",
+          });
+      });
+    });
+
+    return () => context.revert();
+  }, [images]);
+
   return (
-    <div>
-      <Navbar/>
-      <div >
-        <div className='bg-coffeeMenu  flex flex-col'>
-            <div>
-                <span className='text-mycolor text-6xl underline flex items-center justify-center pt-10'>MENU</span>
-            </div>
-            <div style={{paddingLeft:370}} className='py-20'>
-            <img src={coffeMenu2Img} style={{height:1000,width:700}} />
-            </div>
-            
+    <div className="bg-coffeeMenu h-screen" ref={containerRef}>
+      {images.map((image, i) => (
+        <div key={i} className="mask">
+          <img src={image} alt="image"className="h-48 md:h-96 rounded-lg"/>
         </div>
-      </div>
-      <Footer/>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default FullCoffeeMenu
+export default Inspiration;
