@@ -91,7 +91,7 @@ const Navbar = () => {
         <nav className='flex-grow flex flex-col items-center justify-center top-0'>
           <ul className='flex flex-col items-center justify-center h-full '>
             <motion.li whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.9 }} className='py-2'>
-            <Nav.Link as={Link} to="concept" className='text-coffeeMenu text-7xl cursor-pointer' style={{ fontFamily: 'Gambetta', fontWeight: 600 }} onClick={handleMenuToggle}>
+            <Nav.Link as={Link} to="concept" className='text-coffeeMenu text-7xl cursor-pointer' style={{ fontFamily: 'Gambetta', fontWeight: 300 }} onClick={handleMenuToggle}>
             CONCEPT
              </Nav.Link>
             </motion.li>
