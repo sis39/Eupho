@@ -38,7 +38,7 @@ const EuphoHome = () => {
               <h1 className='md:m-5 md:pl-20' style={{ fontFamily: 'Stardom-Regular, sans-serif' }}>
                 <span className='text-textColor md:text-6xl text-5xl md:text-center'>Asian Tapas</span>
               </h1>
-              <span className='text-textColor text-4xl text-center md:pl-12 px-12 pt-4' style={{ fontFamily: 'Stardom-Regular, sans-serif' }}>Savoring Stories from the Maritime Silk Route</span>
+              <span className='text-textColor text-4xl text-center md:pl-12 px-12 pt-4' style={{ fontFamily: 'Stardom-Regular' }}>Savoring Stories from the Maritime Silk Route</span>
             </div>
             <div className='md:mt-10 md:pl-20 mt-10 cursor-pointer'>
               <a href=''>
