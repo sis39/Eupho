@@ -1,12 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { beverageImg, deliciousFood, dessertsImg, Flower2, soupImg, wineBottleImg } from '../utils';
 import { useNavigate } from 'react-router-dom';
-import { motion } from "framer-motion";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Menu = () => {
     const navigate = useNavigate();
-
+    const container = useRef(null);
+    const image1 = useRef(null);
+    const image2 = useRef(null);
+    const image3 = useRef(null);
+    const image4 = useRef(null);
+    const image5 = useRef(null);
+    
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -14,6 +23,26 @@ const Menu = () => {
     const handleLinkClick = (path) => {
         navigate(path);
     };
+
+    useLayoutEffect(() => {
+        const context = gsap.context(() => {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: container.current,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true,
+                },
+            })
+            .to(image5.current, { y: -100 }, 0)
+            .to(image1.current, { y: -200 }, 0)
+            .to(image2.current, { y: -300 }, 0)
+            .to(image3.current,{y:-200},0)
+            .to(image4.current,{y:-400},0)
+        }, container);
+        
+        return () => context.revert();
+    }, []);
 
     return (
         <>
@@ -37,20 +66,18 @@ const Menu = () => {
             </Helmet>
             <div>
                 <div className="bg-coffeeMenu px-32">
-                    <div className='-left-11t-0'>
-                    <img src={Flower2} className='h-80'/>
+                    <div className='-left-11 top-0'>
+                        <img src={Flower2} className='h-80'/>
                     </div>
                     
                     <h2>
                         <span style={{ fontFamily: 'Gambetta', fontWeight: 300 }} className='md:text-9xl text-6xl text-textColor relative'>MENU</span>
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-                        <div className="relative">
-                            <motion.img
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.4 }}
-                                src={deliciousFood} style={{ width: 400, height: 500 }} alt="Delicious Food" />
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative" ref={container}>
+                        <div className="relative pt-10">
+                            <img
+                                ref={image5}
+                                src={deliciousFood} style={{ width: 350, height: 500 }} alt="Delicious Food" />
                             <svg
                                 width="300"
                                 height="300"
@@ -80,18 +107,16 @@ const Menu = () => {
                                 </text>
                             </svg>
                         </div>
-                        <div className="relative">
-                            <motion.img
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.4, delay: 0.2 }}
+                        <div className="relative pt-20"  ref={image1}>
+                            <img
+                               
                                 src={beverageImg} style={{ width: 350, height: 500 }} alt="Beverage" />
                             <svg
                                 width="300"
                                 height="300"
                                 viewBox="0 0 300 300"
                                 xmlns="http://www.w3.org/2000/svg"
-                                className='absolute top-28 left-6 animate-spin-slow hover:animate-ping'
+                                className='absolute top-52 left-6 animate-spin-slow hover:animate-ping'
                                 onClick={() => handleLinkClick("/fullcoffeemenu")}
                             >
                                 <defs>
@@ -111,18 +136,16 @@ const Menu = () => {
                                 </text>
                             </svg>
                         </div>
-                        <div className='relative'>
-                            <motion.img
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.4, delay: 0.4 }}
+                        <div className='relative pt-28'ref={image2}>
+                            <img
+                                
                                 src={dessertsImg} style={{ width: 350, height: 500 }} alt="Desserts" />
                             <svg
                                 width="300"
                                 height="300"
                                 viewBox="0 0 300 300"
                                 xmlns="http://www.w3.org/2000/svg"
-                                className='absolute top-28 left-8 animate-spin-slow hover:animate-ping'
+                                className='absolute top-56 left-8 animate-spin-slow hover:animate-ping'
                             >
                                 <defs>
                                     <path id="circlePath" d="M 150, 150
@@ -143,18 +166,16 @@ const Menu = () => {
                                 </text>
                             </svg>
                         </div>
-                        <div className='relative pt-28'>
-                            <motion.img
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.4, delay: 0.6 }}
+                        <div className='relative pt-28'ref={image3}>
+                            <img
+                               
                                 src={soupImg} style={{ width: 350, height: 500 }} alt="Soups" />
                             <svg
                                 width="300"
                                 height="300"
                                 viewBox="0 0 300 300"
                                 xmlns="http://www.w3.org/2000/svg"
-                                className='absolute top-60 left-8 animate-spin-slow hover:animate-ping'
+                                className='absolute top-52 left-8 animate-spin-slow hover:animate-ping'
                             >
                                 <defs>
                                     <path id="circlePath" d="M 150, 150
@@ -175,18 +196,17 @@ const Menu = () => {
                                 </text>
                             </svg>
                         </div>
-                        <div className='relative pt-28'>
-                            <motion.img
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.4, delay: 0.8 }}
+                        <div className='relative pt-72' ref={image4}>
+                            <img
+                                
                                 src={wineBottleImg} style={{ width: 350, height: 500 }} alt="Wine" />
                             <svg
                                 width="300"
                                 height="300"
                                 viewBox="0 0 300 300"
                                 xmlns="http://www.w3.org/2000/svg"
-                                className='absolute top-60 left-8 animate-spin-slow hover:animate-ping'
+                                className='absolute  left-8 animate-spin-slow hover:animate-ping'
+                                style={{top:350}}
                             >
                                 <defs>
                                     <path id="circlePath" d="M 150, 150

@@ -7,8 +7,12 @@ import Flavours from './Flavours';
 import Menu from "./Menu";
 import Reservation from './Reservation';
 import Footer from "./Footer";
+import { useEffect } from 'react';
 
 const EuphoHome = () => {
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  },[]);
   return (
     <div className='bg-coffeeMenu'>
       <Helmet>
