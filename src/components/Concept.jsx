@@ -78,7 +78,7 @@ useEffect(()=>{
           }
         `}</style>
       </Helmet>
-      <div className='md:px-28 relative'>
+      <div className='md:px-28 relative bg-coffeeMenu'>
         <div className='md:ml-auto md:mr-auto'>
           <div className='md:mr-auto relative' ref={container}>
             <div className='md:mb-16 md:pl-10 pl-2 relative md:z-10 z-10 mb-6'>

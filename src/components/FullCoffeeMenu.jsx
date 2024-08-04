@@ -2,6 +2,7 @@ import { Recipe, Fruits } from "../utils";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Sidebar from "../components/Sidebar"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,6 +43,7 @@ const Inspiration = () => {
 
   return (
     <div className="bg-coffeeMenu h-screen" ref={containerRef}>
+      <Sidebar/>
       {images.map((image, i) => (
         <div key={i} className="mask">
           <img src={image} alt="image"className="h-48 md:h-96 rounded-lg"/>

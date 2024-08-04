@@ -1,175 +1,122 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { FaBarsStaggered } from "react-icons/fa6";
-import { Link, useNavigate } from "react-router-dom";
-import { icon, navbarLogo } from "../utils";
+import React, { useState, useRef, useEffect } from 'react';
+import { logo, logo1 } from '../utils';
+import { gsap } from 'gsap';
+import { Helmet } from 'react-helmet';
+import { motion } from 'framer-motion';
+import { Link } from "react-scroll";
+import {  Nav } from "react-bootstrap";
 
-const Navbar = ({ className }) => {
+const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [color, setColor] = useState("bg-transparent");
-  const [Image, setImage] = useState(false);
-  const [changeIcon, setChangeIcon] = useState(false);
-
-  const navigate = useNavigate(); // Use useNavigate for navigation
-
-  useEffect(() => {
-    const changeColor = () => {
-      if (window.scrollY >= 90) {
-        setColor("bg-mycolor");
-        setImage(true);
-      } else {
-        setColor("bg-transparent");
-        setImage(false);
-      }
-    };
-
-    window.addEventListener("scroll", changeColor);
-    return () => window.removeEventListener("scroll", changeColor);
-  }, []);
+  const menuOverlayRef = useRef(null);
+  const menuButtonRef = useRef(null);
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
-
-  const handleLinkClick = (path) => {
-    navigate(path);
-    window.scrollTo(0, 0);
-    closeMenu();
-  };
+  useEffect(() => {
+    if (menuOpen) {
+      gsap.to(menuOverlayRef.current, { x: 0, duration: 0.5 });
+      gsap.to(menuButtonRef.current, { rotate: 360, duration: 0.5 });
+    } else {
+      gsap.to(menuOverlayRef.current, { x: '100%', duration: 0.5 });
+      gsap.to(menuButtonRef.current, { rotate: 0, duration: 0.3 });
+    }
+  }, [menuOpen]);
 
   return (
-    <header
-      className={`${color} text-black py-1 z-20 ${className} flex justify-between items-center w-full top-0 sticky`} 
-      style={{ height: 70 }}
-    >
-      <nav className="flex items-between">
-        <button
-          onClick={handleMenuToggle}
-          className="text-white focus:outline-none pb-6 pt-3 pl-8"
-          onMouseEnter={() => setChangeIcon(true)}
-          onMouseLeave={() => setChangeIcon(false)}
-        >
-          {menuOpen ? (
-            <FaTimes
-              className="text-4xl absolute top-4 left-4 z-30 text-black cursor-pointer"
-              onClick={handleMenuToggle}
-            />
-          ) : changeIcon ? (
-            <FaBarsStaggered
-              className="text-4xl text-textColor cursor-pointer"
-              onClick={handleMenuToggle}
-            />
-          ) : (
-            <FaBars
-              className="text-4xl text-textColor cursor-pointer"
-              onClick={handleMenuToggle}
-            />
-          )}
-        </button>
-        {Image ? (
-          <div>
-            <img src={navbarLogo} className="h-28" style={{ paddingLeft: 600 }} alt="Navbar Logo" />
+    <div className='px-10'>
+      <Helmet>
+        <style>{`
+          @font-face {
+            font-family: 'Gambetta';
+            src: url('../../fonts/Gambetta-Light.woff2') format('woff2'),
+                 url('../../fonts/Gambetta-Light.woff') format('woff');
+            font-weight: 300;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: 'GambettaBold';
+            src: url('../../fonts/Gambetta-Bold.woff2') format('woff2'),
+                 url('../../fonts/Gambetta-Bold.woff') format('woff');
+            font-weight: 700;
+          }
+        `}</style>
+      </Helmet>
+      <div className='flex items-center justify-between w-full'>
+        <div className='flex items-center'>
+          <button className='text-textColor' onClick={handleMenuToggle} aria-label='Toggle Menu'>
+            <svg ref={menuButtonRef} viewBox='0 0 24 24' height={50} width={50} className='fill-none stroke-textColor'>
+              <line x1="2" y1="6" x2="22" y2="6" strokeWidth="2" />
+              <line x1="2" y1="12" x2="22" y2="12" strokeWidth="2" />
+              <line x1="2" y1="18" x2="22" y2="18" strokeWidth="2" />
+            </svg>
+          </button>
+        </div>
+        <div className='text-center pl-40'>
+          <div className='h-72 w-72 mx-auto'>
+            <img src={logo} className='h-full w-full object-contain' alt='Logo' />
           </div>
-        ) : (
-          <div>
-            <img src={icon} className="h-24 pt-1" style={{ paddingLeft: 600 }} alt="Icon" />
+        </div>
+        <div className='pr-8'>
+          <button className='border-solid border-textColor border-2 px-3 py-2 rounded-2xl'>
+            <span className='text-textColor'>MAKE A RESERVATION</span>
+          </button>
+        </div>
+      </div>
+      <div
+        ref={menuOverlayRef}
+        className='fixed inset-0 z-50 flex flex-col  bg-textColor'
+        style={{ transform: 'translateX(100%)' }}
+      >
+        <div className='flex justify-between items-center w-full px-10'>
+          <button className='text-coffeeMenu' onClick={handleMenuToggle} aria-label='Toggle Menu'>
+            <svg viewBox='0 0 24 24' height={50} width={50} className='fill-none stroke-coffeeMenu'>
+              <line x1="2" y1="2" x2="22" y2="22" strokeWidth="2" />
+              <line x1="22" y1="2" x2="2" y2="22" strokeWidth="2" />
+            </svg>
+          </button>
+          <div className='h-72 w-72 pl-4'>
+            <img src={logo1} className='h-full w-full object-contain' alt='Logo' />
           </div>
-        )}
-        <motion.div
-          className={`fixed top-0 left-0 h-full bg-white text-black shadow-lg z-20`}
-          initial="closed"
-          animate={menuOpen ? "open" : "closed"}
-          variants={{
-            open: { x: 0 },
-            closed: { x: "-100%" },
-          }}
-          transition={{ type: "tween", duration: 0.3 }}
-        >
-          <ul className="flex flex-col space-y-4 p-8 text-3xl pt-24">
-            <motion.li
-              className="list cursor-pointer"
-              whileHover={{ scale: 1.1, color: "black" }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => handleLinkClick('/')} 
-            >
-              HOME
+          <motion.button
+            className='border-solid border-coffeeMenu border-2 px-5 py-2 rounded-2xl text-coffeeMenu hover:text-textColor hover:border-textColor hover:bg-coffeeMenu'
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <span className='text-sm tracking-widest'>MAKE A RESERVATION</span>
+          </motion.button>
+        </div>
+        <nav className='flex-grow flex flex-col items-center justify-center top-0'>
+          <ul className='flex flex-col items-center justify-center h-full '>
+            <motion.li whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.9 }} className='py-2'>
+            <Nav.Link as={Link} to="concept" className='text-coffeeMenu text-7xl cursor-pointer' style={{ fontFamily: 'Gambetta', fontWeight: 600 }} onClick={handleMenuToggle}>
+            CONCEPT
+             </Nav.Link>
             </motion.li>
-            <motion.li
-              className="list cursor-pointer"
-              whileHover={{ scale: 1.1, color: "black" }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => handleLinkClick('/about')} 
-            >
-              ABOUT
+            <motion.li whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.9 }} className='py-2'>
+            <Nav.Link as={Link} to="menu" className='text-coffeeMenu text-7xl cursor-pointer' style={{ fontFamily: 'Gambetta', fontWeight: 600 }} onClick={handleMenuToggle}>
+            MENU
+             </Nav.Link>
             </motion.li>
-            <motion.li
-              className="list cursor-pointer"
-              whileHover={{ scale: 1.1, color: "black" }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => handleLinkClick('/fullmenu')} 
-            >
-              MENU
+            <motion.li whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.9 }} className='py-2'>
+              <a href='#gallery' className='text-coffeeMenu text-7xl' style={{ fontFamily: 'Gambetta', fontWeight: 300 }}>GALLERY</a>
             </motion.li>
-            <motion.li
-              className="list cursor-pointer"
-              whileHover={{ scale: 1.1, color: "black" }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => handleLinkClick('/events')} 
-            >
-              EVENTS
+            <motion.li whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.9 }} className='py-2'>
+            <Nav.Link as={Link} to="reservation" className='text-coffeeMenu text-7xl cursor-pointer' style={{ fontFamily: 'Gambetta', fontWeight: 600 }} onClick={handleMenuToggle}>
+            RESERVATIONS
+             </Nav.Link>
             </motion.li>
-            <motion.li
-              className="list cursor-pointer"
-              whileHover={{ scale: 1.1, color: "black" }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => handleLinkClick('/reservations')} 
-            >
-              RESERVATIONS
-            </motion.li>
-            <motion.li
-              className="list cursor-pointer"
-              whileHover={{ scale: 1.1, color: "black" }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => handleLinkClick('/contact')} 
-            >
-              CONTACT
+            <motion.li whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.9 }} className='py-2'>
+            <Nav.Link as={Link} to="contact" className='text-coffeeMenu text-7xl cursor-pointer' style={{ fontFamily: 'Gambetta', fontWeight: 600 }} onClick={handleMenuToggle}>
+            CONTACT
+             </Nav.Link>
             </motion.li>
           </ul>
-          <div className="px-14 pt-14">
-            <motion.button
-              className="md:inline-block border-2 border-black border-solid font-semibold px-6 pb-2 text-black hover:bg-black hover:text-white"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => handleLinkClick('/reservations')} 
-            >
-              <span className="text-sm tracking-widest"> MAKE A RESERVATION</span>
-            </motion.button>
-          </div>
-        </motion.div>
-
-        {menuOpen && (
-          <div
-            className="fixed inset-0 bg-black opacity-50 z-10"
-            onClick={handleMenuToggle}
-          ></div>
-        )}
-      </nav>
-      <div className="pr-14">
-        <motion.button
-          className="hidden md:inline-block border-2 border-black border-solid font-semibold px-6 pb-2 text-black hover:bg-black hover:text-white"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => handleLinkClick('/reservations')} 
-        >
-          <span className="text-sm tracking-widest"> MAKE A RESERVATION</span>
-        </motion.button>
+        </nav>
       </div>
-    </header>
+    </div>
   );
 };
 
