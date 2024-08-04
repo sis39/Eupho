@@ -27,7 +27,7 @@ const Inspiration = () => {
         ease: "Power2.easeOut"
       });
       tl.from(image, 1.5, {
-        xPercent: 100,
+        xPercent:0,
         scale: 1.3,
         delay: -1.5,
         ease: "Power2.easeOut"
@@ -65,7 +65,7 @@ const Inspiration = () => {
             </h2>
           </div>
           <div className="flex flex-col md:flex-row md:gap-3 md:pt-20 relative">
-            <div className="Image-Container flex flex-col md:flex-row gap-4 reveal">
+            <div className="container flex flex-col md:flex-row gap-4 reveal">
               <img src={Fruits} className="h-48 md:h-96 rounded-lg" />
               <img src={Recipe} className="h-48 md:h-96 rounded-lg" />
             </div>

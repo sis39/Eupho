@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Link } from "react-scroll";
 import {  Nav } from "react-bootstrap";
+import table from "../../public/assets/Images/table.png";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -55,14 +56,12 @@ const Navbar = () => {
           </button>
         </div>
         <div className='text-center pl-40'>
-          <div className='h-72 w-72 mx-auto'>
+          <div className='h-72 w-72 mx-auto '>
             <img src={logo} className='h-full w-full object-contain' alt='Logo' />
           </div>
         </div>
-        <div className='pr-8'>
-          <button className='border-solid border-textColor border-2 px-3 py-2 rounded-2xl'>
-            <span className='text-textColor'>MAKE A RESERVATION</span>
-          </button>
+        <div className='pr-8 h-72 w-80 '>
+           <img src={table} className='h-full w-full animate-spin-slow cursor-pointer hover:animate-bounce'/>
         </div>
       </div>
       <div
