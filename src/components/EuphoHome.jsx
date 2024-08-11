@@ -6,8 +6,11 @@ import Inspiration from './Inspiration';
 import Flavours from './Flavours';
 import Menu from "./Menu";
 import Reservation from './Reservation';
+import Contact from "./Contact";
 import Footer from "./Footer";
 import { useEffect } from 'react';
+import { Link } from "react-scroll";
+import {  Nav } from "react-bootstrap";
 
 const EuphoHome = () => {
   useEffect(()=>{
@@ -17,13 +20,18 @@ const EuphoHome = () => {
     <div className='bg-coffeeMenu'>
       <Helmet>
         <style>{`
+           @font-face {
+            font-family: 'Gambetta';
+            src: url('../../fonts/Gambetta-Light.woff2') format('woff2'),
+                 url('../../fonts/Gambetta-Light.woff') format('woff');
+            font-weight: 300;
+            font-style: normal;
+          }
           @font-face {
-            font-family: 'Stardom-Regular';
-            src: url('../../fonts/Stardom-Regular.woff2') format('woff2'),
-                 url('../../fonts/Stardom-Regular.woff') format('woff'),
-                 url('../../fonts/Stardom-Regular.ttf') format('truetype');
-            font-weight: 400;
-            font-display: swap;
+            font-family: 'GambettaBold';
+            src: url('../../fonts/Gambetta-Bold.woff2') format('woff2'),
+                 url('../../fonts/Gambetta-Bold.woff') format('woff');
+            font-weight: 700;
             font-style: normal;
           }
         `}</style>
@@ -36,33 +44,33 @@ const EuphoHome = () => {
         <video className='absolute left-0 top-0 w-full h-full object-cover z-10' autoPlay loop muted>
           <source src={HomeVideo} type='video/mp4' />
         </video>
-        <div className='absolute inset-0 flex flex-col items-center justify-center z-20'>
-          <div className='text-center'>
-            <div className='flex flex-col items-center'>
-              <h1 className='md:m-5 md:pl-20' style={{ fontFamily: 'Stardom-Regular, sans-serif' }}>
-                <span className='text-textColor md:text-6xl text-5xl md:text-center'>Asian Tapas</span>
-              </h1>
-              <span className='text-textColor text-4xl text-center md:pl-12 px-12 pt-4' style={{ fontFamily: 'Stardom-Regular' }}>Savoring Stories from the Maritime Silk Route</span>
+        <div className='absolute z-20 inset-0  flex flex-col items-center justify-center pt-28'>
+           <div className='flex flex-col gap-5 justify-center items-center' >
+               <div>
+                <span className='text-textColor text-7xl ' style={{ fontFamily: 'Gambetta' }}>Exquisite Bites</span>
+               </div>
+               <div>
+                <span className='text-textColor text-5xl font-thin'>Embark on a Journey Through Timeless Flavors</span>
+               </div>
+               <div className='cursor-pointer pt-10'>
+               
+          
+             
+                <span className='text-textColor   text-center'>	&#10209;&nbsp;&nbsp;&nbsp;</span>
+                <Nav.Link as={Link} to="menu"  >
+                <span className='text-textColor md:text-2xl text:xl' style={{ fontFamily: 'Gambetta' }}>MENU</span>
+                </Nav.Link>
+                <span className='text-textColor mb-1 ml-1 mr-1 text-center'>&nbsp;&nbsp;&nbsp;&#10209;</span>
+              
             </div>
-            <div className='md:mt-10 md:pl-20 mt-10 cursor-pointer'>
-              <a href=''>
-                <span className='text-textColor mb-1 ml-1 mr-1 text-center'>&#9670;&nbsp;&nbsp;&nbsp;</span>
-                <span className='text-textColor md:text-2xl text:xl' style={{ fontFamily: 'Stardom-Regular, sans-serif' }}>MENU</span>
-                <span className='text-textColor mb-1 ml-1 mr-1 text-center'>&nbsp;&nbsp;&nbsp;&#9670;</span>
-              </a>
-            </div>
-          </div>
-        </div>
+          
 
-        <div className='absolute bottom-10 md:left-1/2 left-40 transform -translate-x-1/2 z-20 animate-bounce cursor-pointer'>
-          <svg xmlns="http://www.w3.org/2000/svg" width="74.744" height="90.043" viewBox="0 0 74.744 90.043" className='w-12 h-16 md:w-20 md:h-24 pl-5'>
-            <g id="Group_11" transform="translate(-5919.641 -1363.532)">
-              <path id="Path_87" d="M5869.476,1080.805s1.941-16.7,11.31-26.108,25.953-11.233,25.953-11.233" transform="translate(87.537 372.654)" fill="none" stroke="#e3dac6" strokeWidth="2"></path>
-              <path id="Path_88" d="M5906.738,1080.805s-1.941-16.7-11.31-26.108-25.953-11.233-25.953-11.233" transform="translate(50.275 372.654)" fill="none" stroke="#e3dac6" strokeWidth="2"></path>
-              <line id="Line_10" y2="89.928" transform="translate(5957.013 1363.532)" fill="none" stroke="#e3dac6" strokeWidth="2"></line>
-            </g>
-          </svg>
+           </div>
+
         </div>
+        
+
+       
       </div>
 
       <section className='md:py-52 py-32 concept'>
@@ -77,8 +85,11 @@ const EuphoHome = () => {
       <section className='menu'>
         <Menu />
       </section>
-      <section className='md:py-52 reservation'>
+      <section className='md:pt-52 reservation'>
         <Reservation />
+      </section>
+      <section className='contact'>
+        <Contact/>
       </section>
       <section>
         <Footer />

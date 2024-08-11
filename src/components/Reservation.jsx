@@ -54,18 +54,18 @@ const Reservation = () => {
               className="h-full"
             />
             <motion.div
-              className="flex flex-col cursor-pointer h-10 items-center absolute top-96 right-72  pt-36"
+              className="flex flex-col h-10 items-center absolute bottom-96 right-72 z-10 "
               onHoverStart={() => setHovered(true)}
               onHoverEnd={() => setHovered(false)}
             >
-              <a style={{ fontFamily: 'Gambetta' }} className="text-2xl md:text-3xl text-textColor">
+              <a style={{ fontFamily: 'Gambetta' }} className="text-2xl md:text-3xl text-textColor cursor-pointer">
                 CONTACT US TO RESERVE
               </a>
               <div className={`border-t-2 border-textColor rounded-xl transition-all duration-300 ease-in-out ${hovered ? 'w-full' : 'w-24'}`}></div>
               
             </motion.div>
           </div>
-          <div className="right-0 bottom-0 absolute">
+          <div className="right-0 bottom-0 absolute z-0">
                 <img src={Orange}/>
             </div>
           <div className="top-52  absolute">

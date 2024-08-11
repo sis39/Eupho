@@ -19,9 +19,11 @@ export default {
         menuCompColor: "#B5C0D0",
         coffeeMenu: "#07252d",
         textColor: "#e3dac6",
+        secondtextColor:"#d8c29d",
       },
       animation: {
         "spin-slow": "spin 20s linear infinite",
+        "bounce-horizontally":"bounceHorizontally 1s infinite",
       },
       keyframes: {
         spin: {
@@ -30,6 +32,16 @@ export default {
           },
           to: {
             transform: "rotate(360deg)",
+          },
+        },
+        bounceHorizontally: {
+          '0%, 100%': {
+            transform: 'translateX(-25%)',
+            animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)',
+          },
+          '50%': {
+            transform: 'translateX(0)',
+            animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
           },
         },
       },
