@@ -82,7 +82,7 @@ const Inspiration = () => {
               onHoverStart={() => setHovered(true)} 
               onHoverEnd={() => setHovered(false)}
             >
-              <a style={{ fontFamily: 'Gambetta' }} className="text-2xl md:text-3xl">VIEW GALLERY</a>
+              <a href="/Gallery" style={{ fontFamily: 'Gambetta' }} className="text-2xl md:text-3xl">VIEW GALLERY</a>
               <div className={`border-t-2 border-textColor rounded-xl transition-all duration-300 ease-in-out ${hovered ? 'w-full' : 'w-24'}`}></div>
             </motion.div>
             </div>

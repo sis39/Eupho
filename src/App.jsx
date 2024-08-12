@@ -2,11 +2,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 
-import Menu from './components/Menu';
-import FullCoffeeMenu from './components/FullCoffeeMenu';
 import EuphoHome from './components/EuphoHome';
-import Concept from './components/Concept';
-import Reservation from './components/Reservation';
+
+import Gallery from './components/Gallery';
 
 
 
@@ -21,6 +19,7 @@ function App() {
      <BrowserRouter>
         <Routes>
           <Route path="/" element={<EuphoHome />} />
+          <Route path="/Gallery" element={<Gallery/>}/>
           {/* // <Route path="/concept" element={<Concept/>}/>
           // <Route path="/team" element={<Chefdetails />} />
           // <Route path="/wine" element={<Wine />} />

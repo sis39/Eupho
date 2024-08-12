@@ -4,13 +4,13 @@ import { gsap } from 'gsap';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Link } from "react-scroll";
-import {  Nav } from "react-bootstrap";
 import table from "../../public/assets/Images/table.png";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuOverlayRef = useRef(null);
   const menuButtonRef = useRef(null);
+  
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
@@ -55,18 +55,23 @@ const Navbar = () => {
             </svg>
           </button>
         </div>
-        <div className='text-center pl-40'>
-          <div className='h-72 w-72 mx-auto '>
+        <div className='text-center md:pl-40 pl-20'>
+          <div className='md:h-72 md:w-72 sm:h-56 sm:w-56 h-32 w-32 mx-auto '>
             <img src={logo} className='h-full w-full object-contain' alt='Logo' />
           </div>
         </div>
-        <div className='pr-8 h-72 w-80 '>
-           <img src={table} className='h-full w-full animate-spin-slow cursor-pointer hover:animate-bounce'/>
+        <div className={`pr-8 h-72 w-80 ${props.visible2}`}>
+
         </div>
+
+            <div className={`pr-8 h-72 w-80 ${props.visible}`}>
+              <img src={table} className='h-full w-full animate-spin-slow cursor-pointer hover:animate-bounce'/>
+            </div>
+         
       </div>
       <div
         ref={menuOverlayRef}
-        className='fixed inset-0 z-50 flex flex-col  bg-textColor'
+        className='fixed inset-0 z-50 flex flex-col bg-textColor'
         style={{ transform: 'translateX(100%)' }}
       >
         <div className='flex justify-between items-center w-full px-10'>
@@ -90,27 +95,27 @@ const Navbar = () => {
         <nav className='flex-grow flex flex-col items-center justify-center top-0'>
           <ul className='flex flex-col items-center justify-center h-full '>
             <motion.li whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.9 }} className='py-2'>
-            <Nav.Link as={Link} to="concept" className='text-coffeeMenu text-7xl cursor-pointer' style={{ fontFamily: 'Gambetta', fontWeight: 300 }} onClick={handleMenuToggle}>
-            CONCEPT
-             </Nav.Link>
+              <Link to="concept" smooth={true} duration={500} className='text-coffeeMenu text-7xl cursor-pointer' style={{ fontFamily: 'Gambetta', fontWeight: 300 }} onClick={handleMenuToggle}>
+                CONCEPT
+              </Link>
             </motion.li>
             <motion.li whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.9 }} className='py-2'>
-            <Nav.Link as={Link} to="menu" className='text-coffeeMenu text-7xl cursor-pointer' style={{ fontFamily: 'Gambetta', fontWeight: 600 }} onClick={handleMenuToggle}>
-            MENU
-             </Nav.Link>
+              <Link to="menu" smooth={true} duration={2000} className='text-coffeeMenu text-7xl cursor-pointer' style={{ fontFamily: 'Gambetta', fontWeight: 600 }} onClick={handleMenuToggle}>
+                MENU
+              </Link>
             </motion.li>
             <motion.li whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.9 }} className='py-2'>
-              <a href='#gallery' className='text-coffeeMenu text-7xl' style={{ fontFamily: 'Gambetta', fontWeight: 300 }}>GALLERY</a>
+              <a href='/Gallery' className='text-coffeeMenu text-7xl' style={{ fontFamily: 'Gambetta', fontWeight: 300 }}>GALLERY</a>
             </motion.li>
             <motion.li whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.9 }} className='py-2'>
-            <Nav.Link as={Link} to="reservation" className='text-coffeeMenu text-7xl cursor-pointer' style={{ fontFamily: 'Gambetta', fontWeight: 600 }} onClick={handleMenuToggle}>
-            RESERVATIONS
-             </Nav.Link>
+              <Link to="reservation" smooth={true} duration={3000} className='text-coffeeMenu text-7xl cursor-pointer' style={{ fontFamily: 'Gambetta', fontWeight: 600 }} onClick={handleMenuToggle}>
+                RESERVATIONS
+              </Link>
             </motion.li>
             <motion.li whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.9 }} className='py-2'>
-            <Nav.Link as={Link} to="contact" className='text-coffeeMenu text-7xl cursor-pointer' style={{ fontFamily: 'Gambetta', fontWeight: 600 }} onClick={handleMenuToggle}>
-            CONTACT
-             </Nav.Link>
+              <Link to="contact" smooth={true} duration={3500} className='text-coffeeMenu text-7xl cursor-pointer' style={{ fontFamily: 'Gambetta', fontWeight: 600 }} onClick={handleMenuToggle}>
+                CONTACT
+              </Link>
             </motion.li>
           </ul>
         </nav>

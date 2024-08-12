@@ -6,7 +6,7 @@ import Cake from "../../public/assets/Images/cake.jpg";
 import logoIcon from "../../public/assets/Images/logoImg.png";
 import navIcon from "../../public/assets/Images/navLogo.png";
 import chefImg from "../../public/assets/Images/chef.jpg";
-import wineImg from "../../public/assets/Images/wine.jpg";
+
 import eventImg from "../../public/assets/Images/events.jpg";
 import chefsImg from "../../public/assets//Images/chefs.jpg";
 import fishImg from "../../public/assets/Images/fish.jpg";
@@ -42,7 +42,7 @@ export const cake = Cake;
 export const icon = logoIcon;
 export const navbarLogo = navIcon;
 export const chef = chefImg;
-export const wine = wineImg;
+
 export const event = eventImg;
 export const aboutPic = aboutUsPic;
 export const chefImgs = chefsImg;
