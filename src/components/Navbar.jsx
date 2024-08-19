@@ -5,12 +5,17 @@ import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Link } from "react-scroll";
 import table from "../../public/assets/Images/table.png";
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = (props) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuOverlayRef = useRef(null);
   const menuButtonRef = useRef(null);
-  
+  const navigate = useNavigate();
+  const ReservationTable =()=>{
+    navigate('/Reservationtable'); 
+  }
+
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
@@ -65,7 +70,7 @@ const Navbar = (props) => {
         </div>
 
             <div className={`pr-8 h-72 w-80 ${props.visible}`}>
-              <img src={table} className='h-full w-full animate-spin-slow cursor-pointer hover:animate-bounce'/>
+              <img src={table} onClick={ReservationTable} className='h-full w-full animate-spin-slow cursor-pointer hover:animate-bounce'/>
             </div>
          
       </div>
