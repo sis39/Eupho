@@ -23,12 +23,7 @@ function App() {
           <Route path="/Gallery" element={<Gallery/>}/>
           <Route path="/Reservationtable" element={<Reservationtalble/>}/>
           
-          {/* // <Route path="/concept" element={<Concept/>}/>
-          // <Route path="/team" element={<Chefdetails />} />
-          // <Route path="/wine" element={<Wine />} />
-          // <Route path="/events" element={<Events />} />
-          // <Route path="/fullmenu" element={<Menu/>} />
-          // <Route path="/fullcoffeemenu" element={<FullCoffeeMenu/>}/> */}
+         
         </Routes> 
       </BrowserRouter> 
       
