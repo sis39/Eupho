@@ -58,17 +58,17 @@ const Inspiration = () => {
       </Helmet>
       <div className=' text-textColor'>
         <div className="ml-auto mr-auto box-border">
-          <div className="px-4 md:px-24">
-            <h2 className="flex flex-col md:flex-row md:items-center">
-              <span className="block text-2xl md:text-4xl md:pl-5" style={{ fontFamily: 'Gambetta' }}>ORIGINS</span>
-              <span className="block text-2xl md:text-4xl md:pl-5" style={{ fontFamily: 'Gambetta' }}>AND</span>
-              <span className="block text-2xl md:text-4xl md:pl-5" style={{ fontFamily: 'Gambetta' }}>INSPIRATIONS</span>
+          <div className="px-2 md:px-24">
+            <h2 className="flex flex-wrap gap-2 flex-row md:flex-row md:items-center">
+              <span className="block text-2xl md:text-5xl md:pl-5" style={{ fontFamily: 'Gambetta' }}>ORIGINS</span>
+              <span className="block text-2xl md:text-5xl md:pl-5" style={{ fontFamily: 'Gambetta' }}>AND</span>
+              <span className="block text-2xl md:text-5xl md:pl-5" style={{ fontFamily: 'Gambetta' }}>INSPIRATIONS</span>
             </h2>
           </div>
-             <div className="container flex pt-12 pl-4 ">
-              <div className="gap-6 flex " >
-              <div className="mask">
-              <img src={Fruits} className="h-48 md:h-96 rounded-lg" />
+             <div className="container md:flex pt-12 md:pl-4 sm:pl-2 pl-1 ">
+              <div className="gap-6  md:flex " >
+              <div className="mask pb-3">
+              <img src={Fruits} className="h-48  md:h-96 rounded-lg" />
               </div>
               <div className="mask">
               <img src={Recipe} className="h-48 md:h-96 rounded-lg" />
@@ -82,7 +82,7 @@ const Inspiration = () => {
               onHoverStart={() => setHovered(true)} 
               onHoverEnd={() => setHovered(false)}
             >
-              <a href="/Gallery" style={{ fontFamily: 'Gambetta' }} className="text-2xl md:text-3xl">VIEW GALLERY</a>
+              <a href="/Gallery" style={{ fontFamily: 'GambettaBold' }} className="text-2xl md:text-3xl font-thin">VIEW GALLERY</a>
               <div className={`border-t-2 border-textColor rounded-xl transition-all duration-300 ease-in-out ${hovered ? 'w-full' : 'w-24'}`}></div>
             </motion.div>
             </div>

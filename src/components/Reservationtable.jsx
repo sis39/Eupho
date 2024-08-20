@@ -46,7 +46,7 @@ const Reservationtable = () => {
     };
 
     return (
-        <div className='bg-coffeeMenu'>
+        <div className='bg-coffeeMenu overflow-x-hidden'>
             <Helmet>
                 <style>{`
                 @font-face {

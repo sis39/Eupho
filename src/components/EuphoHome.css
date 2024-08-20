@@ -1,0 +1,13 @@
+.euphoclass{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
+     
+    }
+
+.euphoclass::-webkit-scrollbar {
+    display: none;
+ }
+

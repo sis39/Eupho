@@ -10,15 +10,19 @@ import Reservation from './Reservation';
 import Contact from "./Contact";
 import Footer from "./Footer";
 import { Link } from "react-scroll";
+import {motion} from "framer-motion";
+import './EuphoHome.css';
 
 const EuphoHome = () => {
+  const line1 =["Exquisite", "Bites"];
+  const line =["Embark", "on", "a", "Journey", "Through", "Timeless", "Flavors"];
   const visible2 = 'hidden';
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className='bg-coffeeMenu'>
+    <div className='bg-coffeeMenu euphoclass'>
       <Helmet>
         <style>{`
           @font-face {
@@ -42,17 +46,36 @@ const EuphoHome = () => {
         <div className="relative z-30">
           <Navbar visible2={visible2}/>
         </div>
-        <video className='absolute left-0 top-0 w-full h-full object-cover z-10' autoPlay loop muted>
+        <video className='absolute left-0 top-0 md:w-full md:h-full sm:w-full sm:h-full h-full w-full object-cover z-10' autoPlay loop muted>
           <source src={HomeVideo} type='video/mp4' />
         </video>
         <div className='absolute z-20 inset-0 flex flex-col items-center justify-center pt-28'>
           <div className='flex flex-col gap-5 justify-center items-center'>
-            <div>
-              <span className='text-textColor text-7xl' style={{ fontFamily: 'Gambetta' }}>Exquisite Bites</span>
+            <div className='w-full flex flex-wrap justify-center' >
+              {
+                line1.map((word,i)=>(
+                  <motion.span 
+                  initial={{opacity:0}}
+                  whileInView={{opacity:1}}
+                  transition={{delay:0.2*i,duration:1}}
+                  className='text-textColor text-7xl mr-2' style={{ fontFamily: 'Gambetta' }}>{word}</motion.span>
+                ))
+              }
             </div>
-            <div>
-              <span className='text-textColor text-5xl font-thin'>Embark on a Journey Through Timeless Flavors</span>
-            </div>
+            <div className='w-full flex flex-wrap justify-center'>
+  {line.map((word, i) => (
+    <motion.span
+      key={i}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ delay: 0.2 * i, duration: 2 }}
+      className='text-textColor text-3xl sm:text-4xl md:text-5xl font-thin sm:mr-3 md:mr-4 mr-2'
+    >
+      {word}
+    </motion.span>
+  ))}
+</div>
+
             <div className='cursor-pointer pt-10'>
               <span className='text-textColor text-center'>&#10209;&nbsp;&nbsp;&nbsp;</span>
               <Link to="menu" smooth={true} duration={500}>
@@ -64,10 +87,10 @@ const EuphoHome = () => {
         </div>
       </div>
 
-      <section className='concept md:py-52 py-32'>
+      <section className='concept md:py-52 sm:py-32 py-20'>
         <Concept />
       </section>
-      <section className='md:py-24 py-32 relative'>
+      <section className='md:py-24 sm:py-32 py-20 relative'>
         <Inspiration />
       </section>
       <section className='md:py-32 py-32 relative'>
@@ -85,7 +108,7 @@ const EuphoHome = () => {
       <section>
         <Footer />
       </section>
-    </div>
+      </div>
   );
 };
 

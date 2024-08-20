@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { ConceptImg, Coriander, Flower, Onion } from '../utils';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {motion} from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -63,36 +64,51 @@ useEffect(()=>{
 
           @media (max-width: 768px) {
             .Concept {
-              height: 300px;
+              height: 500px;
             }
           }
 
-          @media (max-width: 480px) {
+          @media  (max-width: 480px) {
+  .Concept {
+    height: 300px;
+    padding-left: 30px;
+  }
+}
+
+
+             @media (max-width: 1024px) and (min-width: 481px) {
             .Concept {
-              height: 300px;
+              height: 600px;
+               padding-left: 30px;
             }
+
           }
+            
 
           body {
             overflow-x: hidden;
           }
         `}</style>
       </Helmet>
-      <div className='md:px-28 relative bg-coffeeMenu'>
+      <div className='md:px-16 relative bg-coffeeMenu'>
         <div className='md:ml-auto md:mr-auto'>
           <div className='md:mr-auto relative' ref={container}>
-            <div className='md:mb-16 md:pl-10 pl-2 relative md:z-10 z-10 mb-6'>
+            <div className='md:mb-16 md:pl-4 pl-2 relative  z-20 mb-6'>
               <h2>
-                <span style={{ fontFamily: 'Gambetta', fontWeight: 300 }} className='md:text-9xl text-6xl text-textColor relative'>CONCEPT</span>
+                <span style={{ fontFamily: 'Gambetta', fontWeight: 300 }} className='md:text-9xl sm:text-6xl text-4xl text-textColor relative'>CONCEPT</span>
               </h2>
             </div>
-            <img src={ConceptImg} ref={conceptRef} className='Concept absolute z-10 md:left-[60%] left-36 top-56' />
-            <img src={Onion} ref={OnionRef} className='Onion md:-top-72 absolute z-20 -top-40 right-60 md:left-0 h-44 md:h-full' />
-            <img src={Coriander} ref={corianderRef} className='Coriander absolute z-0 top-96 h-44 md:h-full' />
+            <img src={ConceptImg} ref={conceptRef} className='Concept absolute z-10 md:left-[55%]  left-32 top-80 ' />
+            <img src={Onion} ref={OnionRef} className='Onion  md:-top-72 absolute z-20 -top-40 right-60 left-5 md:-left-11 h-44 md:h-60' />
+            <img src={Coriander} ref={corianderRef} className='Coriander absolute z-0 top-96 h-44 md:h-56' />
             <img src={Flower} ref={flowerRef} className='Flower absolute z-20 md:left-[80%] bottom-0 h-28 left-48 md:h-80' />
-            <p style={{ fontFamily: 'Gambetta', fontWeight: 300 }} className='md:text-5xl text-2xl text-textColor z-20 md:pr-96 pt-14 relative pr-10'>
+            <motion.p
+            initial={{opacity:0}}
+            whileInView={{opacity:1}} 
+            transition={{delay:0.3}}
+            style={{ fontFamily: 'Gambetta', fontWeight: 300 }} className='flex  md:text-5xl text-2xl text-textColor z-20 md:pr-10 pt-14 relative pr-10'>
               Discover South India's coastal flavors and spices at Eupho. Nestled beachside, experience the Maritime Silk Route's culinary traditions.
-            </p>
+            </motion.p>
           </div>
         </div>
       </div>
