@@ -93,7 +93,7 @@ const EuphoHome = () => {
       <section className='md:py-24 sm:py-32 py-20 relative'>
         <Inspiration />
       </section>
-      <section className='md:py-32 py-32 relative'>
+      <section className=' relative'>
         <Flavours />
       </section>
       <section className='menu'>

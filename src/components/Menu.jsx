@@ -83,7 +83,7 @@ const Menu = () => {
                                 height="300"
                                 viewBox="0 0 300 300"
                                 xmlns="http://www.w3.org/2000/svg"
-                                className='absolute top-28 left-12 animate-spin-slow hover:animate-ping'
+                                className='absolute top-28 left-12 animate-spin-slow '
                             >
                                 <defs>
                                     <path id="circlePath" d="M 150, 150
@@ -116,8 +116,8 @@ const Menu = () => {
                                 height="300"
                                 viewBox="0 0 300 300"
                                 xmlns="http://www.w3.org/2000/svg"
-                                className='absolute top-52 left-6 animate-spin-slow hover:animate-ping'
-                                onClick={() => handleLinkClick("/fullcoffeemenu")}
+                                className='absolute top-52 left-6 animate-spin-slow '
+                                
                             >
                                 <defs>
                                     <path id="circlePath" d="M 150, 150
@@ -145,7 +145,7 @@ const Menu = () => {
                                 height="300"
                                 viewBox="0 0 300 300"
                                 xmlns="http://www.w3.org/2000/svg"
-                                className='absolute top-56 left-8 animate-spin-slow hover:animate-ping'
+                                className='absolute top-56 left-8 animate-spin-slow '
                             >
                                 <defs>
                                     <path id="circlePath" d="M 150, 150
@@ -175,7 +175,7 @@ const Menu = () => {
                                 height="300"
                                 viewBox="0 0 300 300"
                                 xmlns="http://www.w3.org/2000/svg"
-                                className='absolute top-52 left-8 animate-spin-slow hover:animate-ping'
+                                className='absolute top-52 left-8 animate-spin-slow '
                             >
                                 <defs>
                                     <path id="circlePath" d="M 150, 150
@@ -205,7 +205,7 @@ const Menu = () => {
                                 height="300"
                                 viewBox="0 0 300 300"
                                 xmlns="http://www.w3.org/2000/svg"
-                                className='absolute  left-8 animate-spin-slow hover:animate-ping'
+                                className='absolute  left-8 animate-spin-slow '
                                 style={{top:350}}
                             >
                                 <defs>

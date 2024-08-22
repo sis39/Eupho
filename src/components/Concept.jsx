@@ -38,6 +38,25 @@ const Concept = () => {
 useEffect(()=>{
   window.scrollTo(0, 0);
 },[]);
+useEffect(() => {
+  const elements = document.querySelectorAll(".Concept");
+  const elements1 = document.querySelectorAll(".Image2")
+
+  elements.forEach(element => {
+    gsap.to(element, {
+      y: (index, target) => -target.getBoundingClientRect().height, // Move up on scroll down
+      scrollTrigger: {
+        trigger: element,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+      }
+    });
+  });
+  
+  
+
+}, []);
   
   return (
     <>
