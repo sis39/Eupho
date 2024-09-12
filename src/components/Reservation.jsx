@@ -43,38 +43,69 @@ const Reservation = () => {
             font-weight: 700;
             font-style: normal;
           }
+//             @media (max-width:320px){
+//             .reservationImg{
+//             width:150px,
+//             }
+            
+//             .size{
+            
+//             padding-left:8px
+//             }
+//             }
+//            @media (min-width: 321px) and (max-width: 767px) {
+  
+
+//   .reservationImg {
+//     padding-left: 40px;
+//     padding-right: 180px;
+//   }
+//     .size{
+//     padding-left:8px
+//     }
+    
+// }
+//     @media (min-width:1024px){
+//     .reserve{
+//       padding-top:144px
+//     }
+//     }
+  
+
         `}</style>
       </Helmet>
-      <div className="md:px-24 md:pt-36 relative">
+      <div className=" md:px-16 md:pt-36 relative pt-8 sm:pt-20">
         <div ref={container}>
             
-          <div className="pl-48 pt-28 flex gap-44" style={{ height: 750 }}>
+           <div className="imgContainer  md:pl-20 pt-28 flex flex-col sm:flex-col gap-44" > {/* style={{ height: 750,width:500 }} */}
             <img ref={imageRef}
                src={Reservations} 
-              className="h-full"
+              className="h-full reservationImg rounded-md overflow-hidden px-8 shadow-lg sm:h-auto md:w-[500px] z-10  "
             />
-            <motion.div
-              className="flex flex-col h-10 items-center absolute bottom-96 right-72 z-10 "
+            
+          </div>
+          <motion.div
+              className="flex flex-col  h-10 items-center  absolute top-96 sm:bottom-0 md:bottom-10 flex-wrap pl-5  lg:right-72 z-10 "
               onHoverStart={() => setHovered(true)}
               onHoverEnd={() => setHovered(false)}
             >
-              <a style={{ fontFamily: 'Gambetta' }} className="text-2xl md:text-3xl text-textColor cursor-pointer">
+              <a style={{ fontFamily: 'Gambetta' }} className=" reserve text-2xl lg:bottom-1 md:text-3xl text-textColor cursor-pointer">
                 CONTACT US TO RESERVE
               </a>
               <div className={`border-t-2 border-textColor rounded-xl transition-all duration-300 ease-in-out ${hovered ? 'w-full' : 'w-24'}`}></div>
               
             </motion.div>
-          </div>
-          <div className="right-0 bottom-0 absolute z-0">
-                <img src={Orange}/>
+          
+          <div className="  right-0 bottom-32 lg:bottom-0 absolute">
+                <img src={Orange} className="orange md:pl-96 h-60 z-0 md:h-full"/>
             </div>
-          <div className="top-52  absolute">
-            <h2 className="pl-28">
+          <div className="top-10 md:top-52  absolute">
+            <h2 className="name md:pl-0 ">
               <span
                
                 
                 style={{ fontFamily: 'Gambetta', fontWeight: 300 }}
-                className='md:text-9xl text-6xl text-textColor relative'
+                className='size md:text-8xl text-4xl pl-6 sm:text-6xl md:pl-0 z-20 text-textColor relative'
               >
                 RESERVATIONS
               </span>

@@ -40,11 +40,11 @@ useEffect(()=>{
 },[]);
 useEffect(() => {
   const elements = document.querySelectorAll(".Concept");
-  const elements1 = document.querySelectorAll(".Image2")
+
 
   elements.forEach(element => {
     gsap.to(element, {
-      y: (index, target) => -target.getBoundingClientRect().height, // Move up on scroll down
+      y: (index, target) => -target.getBoundingClientRect().height, 
       scrollTrigger: {
         trigger: element,
         start: "top bottom",
@@ -114,7 +114,7 @@ useEffect(() => {
           <div className='md:mr-auto relative' ref={container}>
             <div className='md:mb-16 md:pl-4 pl-2 relative  z-20 mb-6'>
               <h2>
-                <span style={{ fontFamily: 'Gambetta', fontWeight: 300 }} className='md:text-9xl sm:text-6xl text-4xl text-textColor relative'>CONCEPT</span>
+                <span style={{ fontFamily: 'Gambetta', fontWeight: 300 }} className='md:text-9xl sm:text-6xl text-5xl text-textColor relative'>CONCEPT</span>
               </h2>
             </div>
             <img src={ConceptImg} ref={conceptRef} className='Concept absolute z-10 md:left-[55%]  left-32 top-80 ' />
