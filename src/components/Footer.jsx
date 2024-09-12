@@ -10,19 +10,18 @@ const Footer = () => {
         <div className="h-1/4">
           <img src={navbarLogo} className="h-full" style={{ height: 200 }} />
         </div>
-        <div className="h-1/2 grid grid-cols-3">
+        <div className="h-1/2 grid md:grid-cols-3 grid-cols-2">
           <div className="h-full">
-            <div className="h-3/4">
+            <div className="md:h-3/4">
               <h1 className="font-bold tracking-widest">SITEMAP</h1>
               <div className="flex flex-col gap-1 pt-3">
                 <a href="">About</a>
                 <a href="">Menu</a>
-                <a href="">Meet the team</a>
                 <a href="">Reservation Policy</a>
                 <a href="">Privacy Policy</a>
               </div>
             </div>
-            <div className="h-1/4 pt-3">
+            <div className="h-1/4 md:pt-3 pt-72">
               <h1 className="font-bold tracking-widest">SOCIAL</h1>
               <div className="flex gap-3 text-2xl pt-3">
                 <a href="">{<PiFacebookLogoBold />}</a>
@@ -43,7 +42,7 @@ const Footer = () => {
                 <h6>Phone: +91 8919866135</h6>
               </div>
             </div>
-            <div className="h-3/4 pt-10">
+            <div className="h-3/4 lg:pt-10 md:pt-16 pt-52">
               <h1 className="font-bold tracking-widest">OPENING HOURS</h1>
               <div className="pt-3">
                 <div className="flex flex-col gap-1">
@@ -60,13 +59,13 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <div className="h-1/4">
+            <div className="md:h-1/4">
               <h1 className="font-bold tracking-widest pb-4">RESERVATIONS</h1>
               <button className="hidden md:inline-block border-2 border-black border-solid font-semibold px-6 pb-2 text-black hover:bg-black hover:text-white">
                 <span className="text-sm tracking-widest">MAKE A RESERVATION</span>
               </button>
             </div>
-            <div className="h-3/4 flex flex-col pt-6">
+            <div className="h-3/4 flex flex-col md:pt-6">
               <span>We acknowledge the Traditional Custodians of this land upon which Eupho sits, the indigenous communities of Kerala. We recognize their enduring connection and unique cultural and spiritual relationship to the land, water, and community. We pay our deepest respects to them and their culture, and to Elders, past, present, and emerging.</span>
               <span className="pt-8">Tel: +91 8919866135</span>
             </div>
